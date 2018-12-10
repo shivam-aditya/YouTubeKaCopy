@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
+        let layout = UICollectionViewFlowLayout()
+        window?.rootViewController = UINavigationController(rootViewController: HomeViewController(collectionViewLayout: layout))
+        
+        //get rid of black bar underneath the navbar
+        UINavigationBar.appearance().barTintColor = defaultRedColor
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        
+        let statusBarBackgroundView = UIView()
+        statusBarBackgroundView.backgroundColor = statusBarRedColor
+        
+        window?.addSubview(statusBarBackgroundView)
+        window?.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)
+        window?.addConstraintsWithFormat(format: "V:|[v0(40)]", views: statusBarBackgroundView)
+        //application.statusBarStyle = .lightContent
+        
+        //configure firebase
+        FirebaseApp.configure()
+        
+        YTDataService().getYTData { (ytSearchModel) in
+            print(ytSearchModel)
+        }
+        
         return true
     }
 
