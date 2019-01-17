@@ -7,24 +7,28 @@
 //
 
 import Foundation
+import YoutubeDirectLinkExtractor
 
 class YTDataService: HTTPService {
     let sampleUrl = "http://dh-ws.news.dailyhunt.in/api/v2/pages/users/c1_d1_a1_67810580?langCode=en&edition=india&appLanguage=en&returnTickers=true"
     let homeFeedURL = YTBaseApi + "/activities?part=snippet,contentDetails&home=true"
-    let admiralBulldogSearchURL = YTBaseApi + "/search?part=snippet&q=admiralBulldog&type=video&key="+YTApiKey
-
-    func getYTData(callback: @escaping (_ response: YoutubeSearchModel?) -> Void) {
+    
+    let admiralBulldogSearchURL = YTBaseApi + "/search?part=snippet&q=avenger&type=video&key=" + YTApiKey
+    let videoIdDataAndStatsUrl = YTBaseApi + "/videos?part=snippet,statistics&id=%@&key=" + YTApiKey //MD_0061a5vs
+    //https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=MD_0061a5vs&key=AIzaSyArGHNDm-QS4BKFzzW0VU9IXJGD6a9Qzg4
+    
+    func getYTSearchData(callback: @escaping (_ response: YoutubeSearchModel?) -> Void) {
         performGetRequest(urlString: admiralBulldogSearchURL) { (data, statusCode, error) in
             
             if let data = data {
                 let result = NSString(data: data, encoding:
                     String.Encoding.ascii.rawValue)
-                print("getYTData. data received is:", result)
+                //print("[getYTSearchData] data received is:", result)
             }
 
-            print("getYTData. statusCode received is:", statusCode ?? "")
-            print("getYTData. error received is:", error)
-            if let statusCode = statusCode {
+            print("[getYTSearchData] statusCode received is:", statusCode ?? "")
+            print("[getYTSearchData] error received is:", error)
+            if statusCode != nil {
                 if error != nil {
                     print(error?.localizedDescription)
                 } else {
@@ -37,10 +41,20 @@ class YTDataService: HTTPService {
                         catch{
                             print("error in decoding data in yt data service")
                         }
-                        //print(data)
                     }
                 }
             }
+        }
+    }
+    
+    func getYTStreamingUrl(videoId: String ,callback: @escaping (_ response: String?) -> Void) {
+        print("[GetYTStreamingUrl] videoId received is: \(videoId)")
+        let ytLinkExtractor = YoutubeDirectLinkExtractor()
+        ytLinkExtractor.extractInfo(for: .urlString(YTVideoBaseURL+videoId), success: { info in
+            print("[GetYTStreamingUrl] returning url is: \(info.highestQualityPlayableLink)")
+            callback(info.highestQualityPlayableLink)
+        }) { error in
+            print("Error in getting streaming link. Error is: \(error)")
         }
     }
 }

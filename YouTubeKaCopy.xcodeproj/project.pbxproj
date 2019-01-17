@@ -33,6 +33,7 @@
 		4039323021BE461D000E711F /* PageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4039322721BE461D000E711F /* PageInfo.swift */; };
 		4039323121BE461D000E711F /* Thumbnails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4039322821BE461D000E711F /* Thumbnails.swift */; };
 		4039323221BE461D000E711F /* Snippet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4039322921BE461D000E711F /* Snippet.swift */; };
+		4057955F21C2519E005226A4 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4057955E21C2519E005226A4 /* PlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		4039322721BE461D000E711F /* PageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageInfo.swift; sourceTree = "<group>"; };
 		4039322821BE461D000E711F /* Thumbnails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thumbnails.swift; sourceTree = "<group>"; };
 		4039322921BE461D000E711F /* Snippet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snippet.swift; sourceTree = "<group>"; };
+		4057955E21C2519E005226A4 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		D7D44517D64D5AC38EBFEC9B /* Pods-YouTubeKaCopy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouTubeKaCopy.release.xcconfig"; path = "Pods/Target Support Files/Pods-YouTubeKaCopy/Pods-YouTubeKaCopy.release.xcconfig"; sourceTree = "<group>"; };
 		D9C53E63A8626C20B7A20266 /* Pods-YouTubeKaCopy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouTubeKaCopy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YouTubeKaCopy/Pods-YouTubeKaCopy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				403931F221B6BFD3000E711F /* HomeViewController.swift */,
+				4057955E21C2519E005226A4 /* PlayerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				403931EA21B6BFD3000E711F /* Frameworks */,
 				403931EB21B6BFD3000E711F /* Resources */,
 				E54EB37DD55D6BE150D35132 /* [CP] Embed Pods Frameworks */,
+				39E205C824E528C8671A1102 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -274,6 +278,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		39E205C824E528C8671A1102 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-YouTubeKaCopy/Pods-YouTubeKaCopy-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YouTubeKaCopy/Pods-YouTubeKaCopy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4D450FF7971E1C2F8D3DA69C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -305,15 +331,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-YouTubeKaCopy/Pods-YouTubeKaCopy-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
+				"${PODS_ROOT}/GoogleAds-IMA-iOS-SDK/GoogleInteractiveMediaAds.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/YoutubeDirectLinkExtractor/YoutubeDirectLinkExtractor.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleInteractiveMediaAds.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YoutubeDirectLinkExtractor.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -336,6 +368,7 @@
 				4039320E21B92C76000E711F /* MenuBar.swift in Sources */,
 				4039322F21BE461D000E711F /* Medium.swift in Sources */,
 				4039320921B7F7DD000E711F /* UIColorExtention.swift in Sources */,
+				4057955F21C2519E005226A4 /* PlayerViewController.swift in Sources */,
 				4039321621B94E9F000E711F /* BaseCell.swift in Sources */,
 				4039321A21BA7447000E711F /* HTTPService.swift in Sources */,
 				4039321C21BA8647000E711F /* YTDataService.swift in Sources */,

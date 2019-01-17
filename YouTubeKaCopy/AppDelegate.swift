@@ -38,11 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //application.statusBarStyle = .lightContent
         
         //configure firebase
-        FirebaseApp.configure()
-        
-        YTDataService().getYTData { (ytSearchModel) in
-            print(ytSearchModel)
-        }
+        FIRApp.configure()
         
         return true
     }

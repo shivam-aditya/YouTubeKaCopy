@@ -27,3 +27,4 @@ let YTApiKey = "AIzaSyArGHNDm-QS4BKFzzW0VU9IXJGD6a9Qzg4"
 
 //MARK : - Base URLS
 let YTBaseApi = "https://www.googleapis.com/youtube/v3"
+let YTVideoBaseURL = "https://www.youtube.com/watch?v="//"https://www.youtube.com/watch?v=VePzbQ9J_jE"
